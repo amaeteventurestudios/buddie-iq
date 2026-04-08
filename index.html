@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+  <!-- Primary SEO -->
+  <title>Buddie IQ — Your Plants Finally Have a Voice</title>
+  <meta name="description" content="BuddieProbe goes into your soil once and never needs charging, replacing, or thinking about. Get early access to the plant care system that tells you exactly what to do — before your plant shows signs of stress." />
+  <link rel="canonical" href="https://buddieiq.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://buddieiq.com" />
+  <meta property="og:title" content="Buddie IQ — Your Plants Finally Have a Voice" />
+  <meta property="og:description" content="BuddieProbe goes into your soil once and never needs charging, replacing, or thinking about. Get early access to the plant care system that tells you exactly what to do — before your plant shows signs of stress." />
+  <meta property="og:image" content="https://buddieiq.com/images/og-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://buddieiq.com" />
+  <meta name="twitter:title" content="Buddie IQ — Your Plants Finally Have a Voice" />
+  <meta name="twitter:description" content="BuddieProbe goes into your soil once and never needs charging, replacing, or thinking about. Get early access to the plant care system that tells you exactly what to do — before your plant shows signs of stress." />
+  <meta name="twitter:image" content="https://buddieiq.com/images/og-preview.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. STICKY NAVIGATION
+  ============================================================ -->
+  <header class="site-nav" id="site-nav" role="banner">
+    <div class="nav-inner container">
+      <a href="#" class="nav-logo" aria-label="Buddie IQ Home">
+        <!-- Logo icon -->
+        <img src="images/logo.svg" class="nav-leaf" width="22" height="22" alt="" aria-hidden="true" />
+        <span class="nav-wordmark">Buddie IQ</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#founder" class="nav-link">Our Story</a>
+        <a href="#signup" class="nav-cta-btn">Reserve Your Spot</a>
+      </nav>
+      <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
+      <a href="#how-it-works" class="nav-mobile-link">How It Works</a>
+      <a href="#founder" class="nav-mobile-link">Our Story</a>
+      <a href="#signup" class="nav-mobile-link nav-mobile-cta">Reserve Your Spot</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         2. HERO SECTION
+    ============================================================ -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <!--
+        REAL IMAGE: Replace the background-color in .hero with:
+        background-image: url('images/Monstera_window_light.jpg');
+        background-size: cover;
+        background-position: center;
+        File path: images/Monstera_window_light.jpg
+      -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <span class="hero-label label">Early Access Now Open</span>
+        <h1 class="hero-headline">Your plants have been trying to tell you something.</h1>
+        <p class="hero-subheadline">
+          BuddieProbe goes into your soil once. No batteries. No charging. No replacing.
+          Just tells you exactly what your plant needs — before it shows signs of stress.
+        </p>
+        <div class="hero-actions">
+          <a href="#signup" class="btn btn-primary">Reserve Your Spot — $20 Deposit</a>
+          <a href="#signup" class="btn btn-ghost" id="hero-notify-btn">Just keep me updated →</a>
+        </div>
+        <p class="hero-counter" aria-live="polite">
+          <span class="counter-value" data-target="0">0</span>
+          <span class="counter-label"> plant owners on the list</span>
+          <span class="counter-dots" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. PROBLEM SECTION
+    ============================================================ -->
+    <section class="problem section-pad" id="problem" aria-label="The Problem">
+      <div class="container problem-grid reveal">
+        <!-- Left column -->
+        <div class="problem-text">
+          <span class="label label-dark">The Problem</span>
+          <h2 class="section-headline">
+            You're not a bad plant parent.<br />You just can't see underground.
+          </h2>
+          <p class="body-text">
+            The number one way people kill houseplants is overwatering. The number two way is
+            forgetting to water. Both problems share the same cause — you cannot see what is
+            happening at the root level until something goes wrong.
+          </p>
+          <blockquote class="pull-quote">
+            "By the time something looks wrong, it usually already is."
+          </blockquote>
+          <p class="body-text">
+            Analog meters give you a vague number with no context. Bluetooth sensors give you
+            an app and a battery that dies in three weeks. Neither one tells you what to actually
+            do for your specific plant. You're left guessing — and your plants pay for it.
+          </p>
+        </div>
+
+        <!-- Right column -->
+        <div class="problem-visual">
+          <img src="images/product_lifestyle.jpg" alt="Transparent plant pot showing root system and soil layers" class="problem-img" />
+          <div class="stat-card reveal-child">
+            <span class="stat-number">#1</span>
+            <span class="stat-text">Overwatering kills more houseplants than neglect</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. HOW IT WORKS
+    ============================================================ -->
+    <section class="how-it-works section-pad" id="how-it-works" aria-label="How It Works">
+      <div class="container">
+        <div class="section-header centered reveal">
+          <span class="label label-light">The System</span>
+          <h2 class="section-headline light">Three parts.<br class="mobile-only"> Zero maintenance.</h2>
+          <p class="section-sub light-dim">
+            Everything works together so you never have to think about it.
+          </p>
+        </div>
+
+        <div class="how-cards">
+          <!-- Card 01 -->
+          <article class="how-card reveal" aria-label="BuddieProbe">
+            <div class="how-card-img" aria-hidden="true">
+              <!--
+                REAL IMAGE: Replace with:
+                <img src="images/BuddieProbe.jpg" alt="BuddieProbe sensor" />
+                File path: images/BuddieProbe.jpg
+              -->
+              <span class="card-num">01</span>
+            </div>
+            <div class="how-card-body">
+              <h3 class="how-card-title">BuddieProbe</h3>
+              <p class="how-card-subtitle">Set it. Forget it.</p>
+              <p class="how-card-desc">
+                Goes into your soil once. No battery inside. No wiring. No electronics exposed to
+                moisture or roots. Plant it and forget it exists. Works for years without you touching it.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="how-card reveal" aria-label="BuddieHub">
+            <div class="how-card-img" aria-hidden="true">
+              <!--
+                REAL IMAGE: Replace with:
+                <img src="images/BuddieHub.jpg" alt="BuddieHub device" />
+                File path: images/BuddieHub.jpg
+              -->
+              <span class="card-num">02</span>
+            </div>
+            <div class="how-card-body">
+              <h3 class="how-card-title">BuddieHub</h3>
+              <p class="how-card-subtitle">One hub. Every plant.</p>
+              <p class="how-card-desc">
+                Sits on your shelf. Reads every probe in your home continuously. Connects to your
+                Wi-Fi. One hub covers your entire plant collection. You set it up once.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="how-card reveal" aria-label="Buddie IQ App">
+            <div class="how-card-img" aria-hidden="true">
+              <!--
+                REAL IMAGE: Replace with:
+                <img src="images/BuddieApp.jpg" alt="Buddie IQ mobile app" />
+                File path: images/BuddieApp.jpg
+              -->
+              <span class="card-num">03</span>
+            </div>
+            <div class="how-card-body">
+              <h3 class="how-card-title">Buddie IQ App</h3>
+              <p class="how-card-subtitle">What to do. Not just numbers.</p>
+              <p class="how-card-desc">
+                Not a percentage. Not a chart. "Your Monstera is getting dry — time to water."
+                Specific to your plant. Delivered before the problem shows.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p class="how-tagline reveal">"The less you have to think about it, the better it works."</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. FOUNDER SECTION
+    ============================================================ -->
+    <section class="founder section-pad" id="founder" aria-label="From the Founder">
+      <div class="container founder-grid">
+        <!-- Left: photo -->
+        <div class="founder-visual reveal">
+          <img src="images/Amaete_Umanah.jpg" alt="Amaete Umanah, Founder and CEO of Buddie IQ" class="founder-img" />
+          <div class="founder-badge">
+            <span class="founder-badge-name">Amaete Umanah</span>
+            <span class="founder-badge-title">Founder and CEO, Buddie IQ</span>
+          </div>
+        </div>
+
+        <!-- Right: text -->
+        <div class="founder-text reveal">
+          <span class="label label-dark">From the Founder</span>
+          <h2 class="section-headline">I have nine plants. I've killed more than I'd like to admit.</h2>
+          <p class="body-text">
+            Not because I didn't care — but because I couldn't see what was happening underground
+            until it was too late. The soil looked fine. The leaves looked fine. And then one
+            morning, they didn't.
+          </p>
+          <p class="body-text">
+            I've spent years building wireless sensing systems for environments where failure wasn't
+            an option. That work was featured by CNN and selected for TechCrunch Battlefield. I know
+            what it takes to build a sensor that actually works in the real world.
+          </p>
+          <p class="body-text">
+            Buddie IQ is the product I wished existed for my own plants. I'm building it because
+            the tools available today were not built for people who genuinely care.
+          </p>
+          <p class="founder-signature">— Amaete Umanah</p>
+
+          <div class="press-block">
+            <span class="press-label">Previous work featured in</span>
+            <div class="press-logos" aria-label="CNN and TechCrunch press mentions">
+              <a href="https://www.cnn.com/2019/02/20/africa/honeyflow-africa-bees-intl" target="_blank" rel="noopener noreferrer" class="press-logo" aria-label="CNN">CNN</a>
+              <a href="https://techcrunch.com/video/honey-flow-africa-battlefield-africa-2018/" target="_blank" rel="noopener noreferrer" class="press-logo" aria-label="TechCrunch">TechCrunch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. TRUST BAR
+    ============================================================ -->
+    <section class="trust-bar" id="trust" aria-label="Trust and guarantees">
+      <div class="container trust-items">
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">🔒</span>
+          <p class="trust-text">$20 fully refundable deposit. No questions asked.</p>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">📦</span>
+          <p class="trust-text">Ships when ready. Honest updates every step.</p>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">✉️</span>
+          <p class="trust-text">
+            Questions?
+            <a href="mailto:hello@buddieiq.com" class="trust-email">hello@buddieiq.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. SIGNUP SECTION
+    ============================================================ -->
+    <section class="signup section-pad" id="signup" aria-label="Reserve your spot or join the waitlist">
+      <div class="container signup-inner reveal">
+        <span class="label label-light">Early Access</span>
+        <h2 class="section-headline light">Be the first to know your plants are okay.</h2>
+        <p class="section-sub light-dim">Join plant owners who are done guessing.</p>
+
+        <!-- Tab Toggle -->
+        <div class="signup-tabs" role="tablist" aria-label="Signup options">
+          <button
+            class="signup-tab active"
+            id="tab-preorder"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-preorder"
+          >Reserve Spot — $20</button>
+          <button
+            class="signup-tab"
+            id="tab-waitlist"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-waitlist"
+          >Free Waitlist</button>
+        </div>
+
+        <!-- Pre-order panel -->
+        <div class="signup-panel" id="panel-preorder" role="tabpanel" aria-labelledby="tab-preorder">
+          <p class="signup-note">
+            Your $20 deposit is <strong>fully refundable</strong> at any time, for any reason.
+            You will not be charged anything else until we are ready to ship and you confirm
+            your order.
+          </p>
+          <form class="signup-form" id="form-preorder" novalidate>
+            <div class="form-group">
+              <label for="preorder-name" class="form-label">First Name</label>
+              <input
+                type="text"
+                id="preorder-name"
+                name="first_name"
+                class="form-input"
+                placeholder="Your first name"
+                autocomplete="given-name"
+                required
+              />
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="preorder-email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="preorder-email"
+                name="email"
+                class="form-input"
+                placeholder="your@email.com"
+                autocomplete="email"
+                required
+              />
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn btn-submit">Reserve My Spot — $20</button>
+            <!--
+              STRIPE INTEGRATION:
+              Replace the form submit handler in main.js with a call to your Stripe
+              Checkout session. Example:
+                const session = await stripe.redirectToCheckout({ sessionId: '...' });
+              Or use Stripe Payment Links: https://stripe.com/docs/payment-links
+              Load Stripe.js: <script src="https://js.stripe.com/v3/"></script>
+            -->
+          </form>
+          <div class="signup-success" id="success-preorder" aria-live="polite" hidden>
+            <div class="success-box">
+              <span class="success-icon" aria-hidden="true">🌿</span>
+              <h3 class="success-title">You're in! Welcome to the early access list.</h3>
+              <p class="success-body">
+                Check your inbox for a confirmation. We'll reach out with honest updates every
+                step of the way.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waitlist panel -->
+        <div class="signup-panel hidden" id="panel-waitlist" role="tabpanel" aria-labelledby="tab-waitlist" aria-hidden="true">
+          <form class="signup-form" id="form-waitlist" novalidate>
+            <div class="form-group">
+              <label for="waitlist-email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="waitlist-email"
+                name="email"
+                class="form-input"
+                placeholder="your@email.com"
+                autocomplete="email"
+                required
+              />
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn btn-submit">Join the Waitlist — Free</button>
+            <!--
+              EMAIL MARKETING INTEGRATION (ConvertKit / Mailchimp):
+              Replace the form submit handler in main.js with your provider's API call.
+
+              ConvertKit example:
+                fetch('https://api.convertkit.com/v3/forms/{FORM_ID}/subscribe', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ api_key: 'YOUR_API_KEY', email })
+                })
+
+              Mailchimp (via serverless function or Mailchimp embedded form):
+                Use Mailchimp's embedded form action URL or a serverless endpoint.
+            -->
+          </form>
+          <div class="signup-success" id="success-waitlist" aria-live="polite" hidden>
+            <div class="success-box">
+              <span class="success-icon" aria-hidden="true">🌱</span>
+              <h3 class="success-title">You're on the list.</h3>
+              <p class="success-body">
+                We'll keep you updated with honest progress. No spam, ever.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="signup-disclaimer">
+          No spam. Ever. Unsubscribe anytime. Your email is never shared.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. FAQ SECTION
+    ============================================================ -->
+    <section class="faq section-pad" id="faq" aria-label="Frequently Asked Questions">
+      <div class="container faq-inner">
+        <h2 class="section-headline faq-headline reveal">Questions we'd ask too.</h2>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+              <span>What exactly is the $20 deposit for?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" hidden>
+              <p>
+                It reserves your spot in the early access program and locks in your early backer
+                price. It is fully refundable at any time, for any reason, no questions asked.
+                You will not be charged anything else until we are ready to ship and you confirm
+                you still want your order.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+              <span>When will Buddie IQ ship?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" hidden>
+              <p>
+                We are currently in development and validation. We will share honest timeline
+                updates with everyone on the list. We would rather give you an accurate date
+                than a fast one.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+              <span>How does BuddieProbe work without a battery?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" hidden>
+              <p>
+                BuddieProbe uses a proprietary sensing technology that draws energy wirelessly
+                from the BuddieHub when it takes a reading. There is nothing in the soil that
+                needs power, charging, or replacing. It is designed to work indefinitely.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+              <span>Will it work with my soil type or pot?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" hidden>
+              <p>
+                We are validating performance across common potting mixes, soil types, and pot
+                sizes as part of our development. We will publish accuracy and compatibility data
+                before we ship. If your specific setup is not supported at launch, you receive
+                a full refund.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+              <span>What plants does it work with?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" hidden>
+              <p>
+                The app is being built with a species database covering the most common
+                houseplants. At launch it will support the top fifty most popular varieties.
+                Support expands based on community feedback after that.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+              <span>How many plants can one BuddieHub monitor?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-6" hidden>
+              <p>
+                One BuddieHub is designed to monitor ten to fifty probes — enough to cover a
+                full home collection for most plant owners.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+              <span>Is my payment information safe?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-7" hidden>
+              <p>
+                All payments are processed through Stripe, used by millions of businesses
+                worldwide and built to the highest security standards. Buddie IQ never sees
+                or stores your card information.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       9. FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+
+      <!-- Column 1: Brand -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo" aria-label="Buddie IQ Home">
+          <img src="images/logo.svg" class="footer-leaf" width="22" height="22" alt="" aria-hidden="true" />
+          <span class="footer-wordmark">Buddie IQ</span>
+        </a>
+        <p class="footer-tagline">Your plants finally have a voice.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.78a4.85 4.85 0 01-1.02-.09z"/></svg>
+          </a>
+          <a href="https://reddit.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Reddit">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Links -->
+      <div class="footer-links-col">
+        <h3 class="footer-col-heading">Links</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="#how-it-works" class="footer-link">How It Works</a></li>
+          <li><a href="#faq" class="footer-link">FAQ</a></li>
+          <li><a href="mailto:hello@buddieiq.com" class="footer-link">Contact</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Newsletter -->
+      <div class="footer-newsletter">
+        <h3 class="footer-col-heading">Stay in the loop</h3>
+        <form class="footer-form" id="footer-form" novalidate aria-label="Footer newsletter signup">
+          <div class="footer-form-row">
+            <label for="footer-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="footer-email"
+              name="email"
+              class="footer-input"
+              placeholder="your@email.com"
+              autocomplete="email"
+              required
+            />
+            <button type="submit" class="footer-submit" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <span class="footer-form-feedback" id="footer-form-feedback" aria-live="polite"></span>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copy">&copy; Buddie IQ. All rights reserved.</p>
+        <p class="footer-made">Made by a plant owner, for plant owners.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
