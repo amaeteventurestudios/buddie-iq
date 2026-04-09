@@ -10,26 +10,23 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    let count   = 0;
-    let cursor  = null;
-    let hasMore = true;
+    let count = 0;
+    let page  = 1;
 
-    // Page through all subscribers and count them
-    while (hasMore) {
-      const url = new URL(`https://api.kit.com/v4/forms/${formId}/subscribers`);
-      url.searchParams.set('per_page', '500');
-      if (cursor) url.searchParams.set('after', cursor);
+    // Page through all subscribers using v3 API
+    while (true) {
+      const url = `https://api.convertkit.com/v3/forms/${formId}/subscriptions?api_secret=${apiSecret}&page=${page}`;
 
-      const kitRes = await fetch(url.toString(), {
-        headers: { Authorization: `Bearer ${apiSecret}`, Accept: 'application/json' }
-      });
+      const kitRes = await fetch(url, { headers: { Accept: 'application/json' } });
 
       if (!kitRes.ok) throw new Error(`Kit API error: ${kitRes.status}`);
 
       const data = await kitRes.json();
-      count  += (data.subscribers || []).length;
-      hasMore = data.pagination?.has_next_page || false;
-      cursor  = data.pagination?.end_cursor    || null;
+      const subs = data.subscriptions || [];
+      count += subs.length;
+
+      if (subs.length < 50) break; // v3 returns max 50 per page
+      page++;
     }
 
     return res.status(200).json({ count });
