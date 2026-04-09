@@ -373,6 +373,32 @@
         <div class="signup-panel hidden" id="panel-waitlist" role="tabpanel" aria-labelledby="tab-waitlist" aria-hidden="true">
           <form class="signup-form" id="form-waitlist" novalidate>
             <div class="form-group">
+              <label for="waitlist-first-name" class="form-label">First Name</label>
+              <input
+                type="text"
+                id="waitlist-first-name"
+                name="first_name"
+                class="form-input"
+                placeholder="Your first name"
+                autocomplete="given-name"
+                required
+              />
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="waitlist-last-name" class="form-label">Last Name</label>
+              <input
+                type="text"
+                id="waitlist-last-name"
+                name="last_name"
+                class="form-input"
+                placeholder="Your last name"
+                autocomplete="family-name"
+                required
+              />
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
               <label for="waitlist-email" class="form-label">Email Address</label>
               <input
                 type="email"

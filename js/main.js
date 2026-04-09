@@ -311,6 +311,23 @@
   ============================================================ */
 
   /**
+   * Subscribe to Kit form (9304604)
+   */
+  function subscribeToKit(firstName, lastName, email) {
+    var KIT_FORM_ID = '9304604';
+    var data = new FormData();
+    data.append('email_address', email);
+    data.append('fields[first_name]', firstName);
+    if (lastName) data.append('fields[last_name]', lastName);
+    return fetch('https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions', {
+      method: 'POST',
+      body: data
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Kit subscription failed');
+    });
+  }
+
+  /**
    * Show field-level error
    */
   function showError(input, message) {
@@ -380,14 +397,13 @@
         submitBtn.disabled = true;
       }
 
+      // Save to sessionStorage so we can subscribe to Kit after payment
+      sessionStorage.setItem('buddie_name',  nameVal);
+      sessionStorage.setItem('buddie_email', emailVal);
+
       // Redirect to Stripe Payment Link (pre-fill email for convenience)
       var paymentLink = 'https://buy.stripe.com/test_14A4gyccbdby287bHy1RC00';
-      var successUrl  = window.location.origin + window.location.pathname + '?success=true';
-      var cancelUrl   = window.location.origin + window.location.pathname + '?canceled=true';
-      var checkoutUrl = paymentLink
-        + '?prefilled_email=' + encodeURIComponent(emailVal)
-        + '&success_url='     + encodeURIComponent(successUrl)
-        + '&cancel_url='      + encodeURIComponent(cancelUrl);
+      var checkoutUrl = paymentLink + '?prefilled_email=' + encodeURIComponent(emailVal);
 
       window.location.href = checkoutUrl;
     });
@@ -399,49 +415,32 @@
     var successEl = qs('#success-waitlist');
     if (!form || !successEl) return;
 
-    var emailInput = qs('#waitlist-email', form);
+    var firstNameInput = qs('#waitlist-first-name', form);
+    var lastNameInput  = qs('#waitlist-last-name', form);
+    var emailInput     = qs('#waitlist-email', form);
 
-    if (emailInput) {
-      emailInput.addEventListener('input', function () { clearError(emailInput); });
-    }
+    [firstNameInput, lastNameInput, emailInput].forEach(function (input) {
+      if (!input) return;
+      input.addEventListener('input', function () { clearError(input); });
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
+      var valid = true;
+      if (!firstNameInput || firstNameInput.value.trim() === '') {
+        showError(firstNameInput, 'Please enter your first name.');
+        valid = false;
+      }
+      if (!lastNameInput || lastNameInput.value.trim() === '') {
+        showError(lastNameInput, 'Please enter your last name.');
+        valid = false;
+      }
       if (!emailInput || !isValidEmail(emailInput.value)) {
         showError(emailInput, 'Please enter a valid email address.');
-        return;
+        valid = false;
       }
-
-      /*
-       * ──────────────────────────────────────────────────
-       * EMAIL MARKETING INTEGRATION POINT
-       * ──────────────────────────────────────────────────
-       * Replace the simulated submission below with your
-       * email provider's API call.
-       *
-       * Option A — ConvertKit (requires API key on backend):
-       *   await fetch('/api/subscribe', {
-       *     method: 'POST',
-       *     headers: { 'Content-Type': 'application/json' },
-       *     body: JSON.stringify({ email: emailInput.value.trim() })
-       *   });
-       *   // Your /api/subscribe Vercel Edge Function calls:
-       *   // https://api.convertkit.com/v3/forms/{FORM_ID}/subscribe
-       *   // with api_key and email in the body.
-       *
-       * Option B — Mailchimp embedded form:
-       *   Replace <form> action with your Mailchimp list action URL.
-       *   Change method to POST. Add hidden fields as per Mailchimp.
-       *
-       * Option C — Use our Table API (no backend needed):
-       *   fetch('tables/waitlist', {
-       *     method: 'POST',
-       *     headers: { 'Content-Type': 'application/json' },
-       *     body: JSON.stringify({ email: emailInput.value.trim() })
-       *   });
-       * ──────────────────────────────────────────────────
-       */
+      if (!valid) return;
 
       var submitBtn = form.querySelector('.btn-submit');
       if (submitBtn) {
@@ -449,10 +448,19 @@
         submitBtn.disabled = true;
       }
 
-      // Simulate async — replace with real integration above
-      setTimeout(function () {
+      subscribeToKit(
+        firstNameInput.value.trim(),
+        lastNameInput.value.trim(),
+        emailInput.value.trim()
+      ).then(function () {
         showSuccess(form, successEl);
-      }, 700);
+      }).catch(function () {
+        if (submitBtn) {
+          submitBtn.textContent = 'Join the Waitlist — Free';
+          submitBtn.disabled = false;
+        }
+        showError(emailInput, 'Something went wrong. Please try again.');
+      });
     });
   })();
 
@@ -610,6 +618,15 @@
       if (preorderSuccess) preorderSuccess.style.display = 'block';
       var signup = document.getElementById('signup');
       if (signup) signup.scrollIntoView({ behavior: 'smooth' });
+
+      // Subscribe payer to Kit using data saved before redirect
+      var savedName  = sessionStorage.getItem('buddie_name')  || '';
+      var savedEmail = sessionStorage.getItem('buddie_email') || '';
+      if (savedEmail) {
+        subscribeToKit(savedName, '', savedEmail).catch(function () {});
+        sessionStorage.removeItem('buddie_name');
+        sessionStorage.removeItem('buddie_email');
+      }
     }
     if (params.get('canceled') === 'true') {
       var submitBtn = document.querySelector('#form-preorder .btn-submit, #preorder-form .btn-submit');
