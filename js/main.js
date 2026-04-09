@@ -154,9 +154,8 @@
 
   /* ============================================================
      4. ANIMATED COUNTER
-     Finds elements with class .counter-value and data-target.
-     Animates from 0 to target when element enters viewport.
-     Uses requestAnimationFrame for smooth animation.
+     Fetches live subscriber count from /api/subscriber-count,
+     updates data-target, then animates when element enters viewport.
   ============================================================ */
   (function initCounter() {
     var counters = qsa('.counter-value[data-target]');
@@ -195,24 +194,39 @@
       window.requestAnimationFrame(step);
     }
 
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              animateCounter(entry.target);
-              obs.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      counters.forEach(function (el) { obs.observe(el); });
-    } else {
-      counters.forEach(function (el) {
-        el.textContent = parseInt(el.getAttribute('data-target'), 10).toLocaleString();
-      });
+    function setupObserver() {
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        counters.forEach(function (el) { obs.observe(el); });
+      } else {
+        counters.forEach(function (el) {
+          el.textContent = parseInt(el.getAttribute('data-target'), 10).toLocaleString();
+        });
+      }
     }
+
+    // Fetch live count then set up observer
+    fetch('/api/subscriber-count')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (typeof data.count === 'number') {
+          counters.forEach(function (el) {
+            el.setAttribute('data-target', data.count);
+          });
+        }
+      })
+      .catch(function () { /* fall back to data-target="0" */ })
+      .finally(setupObserver);
   })();
 
   /* ============================================================
