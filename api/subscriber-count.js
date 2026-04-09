@@ -10,23 +10,27 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const kitRes = await fetch(
-      `https://api.kit.com/v4/forms/${formId}/subscribers?per_page=1`,
-      { headers: { Authorization: `Bearer ${apiSecret}`, Accept: 'application/json' } }
-    );
+    let count   = 0;
+    let cursor  = null;
+    let hasMore = true;
 
-    if (!kitRes.ok) throw new Error(`Kit API error: ${kitRes.status}`);
+    // Page through all subscribers and count them
+    while (hasMore) {
+      const url = new URL(`https://api.kit.com/v4/forms/${formId}/subscribers`);
+      url.searchParams.set('per_page', '500');
+      if (cursor) url.searchParams.set('after', cursor);
 
-    const data = await kitRes.json();
-    console.log('Kit API response:', JSON.stringify(data));
+      const kitRes = await fetch(url.toString(), {
+        headers: { Authorization: `Bearer ${apiSecret}`, Accept: 'application/json' }
+      });
 
-    // Try all possible locations for total count
-    const count =
-      data?.pagination?.total ??
-      data?.meta?.total_count ??
-      data?.total_subscribers ??
-      data?.subscribers?.length ??
-      0;
+      if (!kitRes.ok) throw new Error(`Kit API error: ${kitRes.status}`);
+
+      const data = await kitRes.json();
+      count  += (data.subscribers || []).length;
+      hasMore = data.pagination?.has_next_page || false;
+      cursor  = data.pagination?.end_cursor    || null;
+    }
 
     return res.status(200).json({ count });
   } catch (err) {
